@@ -4,16 +4,15 @@ Data importer that writes Dutch historic COVID-19 case data as metrics to [Influ
 be used for manual exploration, via the Data Explorer and Dashboards feature in
 InfluxDB's UI, or as a data source for Grafana.
 
-The project consists of a `docker-compose.yml` file and a `datawriter` program
+The project consists of a `docker-compose.yml` file and `datawriter`, a small program
 written in [Go](https://golang.org/) that fetches the data and writes it as
-metrics to a locally running InfluxDB service.
+metrics to an InfluxDB service.
 
-![Imgur](https://imgur.com/Dkq9Snr.png)
+![InfluxDB Data Explorer with Dutch COVID-NL graph](https://imgur.com/Dkq9Snr.png)
 
 ## Usage
 
-Clone the repository and run the following from the repo directory:
-Set the following environment variables. Alter these if you expose the service
+Set the following environment variables. Alter them if you expose the service
 to the outside world.
 
 ```
