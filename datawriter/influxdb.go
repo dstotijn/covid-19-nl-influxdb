@@ -34,7 +34,7 @@ func newInfluxDB(cfg influxConfig) (*influxDB, error) {
 	}, nil
 }
 
-func writeMetrics(ctx context.Context, influx *influxDB, date time.Time, caseReports []caseReport) (int, error) {
+func (influxDB *influxDB) writeMetrics(ctx context.Context, date time.Time, caseReports []caseReport) (int, error) {
 	var metrics []influxdb.Metric
 	for _, caseReport := range caseReports {
 		metrics = append(metrics, influxdb.NewRowMetric(
@@ -51,5 +51,5 @@ func writeMetrics(ctx context.Context, influx *influxDB, date time.Time, caseRep
 		))
 	}
 
-	return influx.client.Write(ctx, influx.bucket, influx.org, metrics...)
+	return influxDB.client.Write(ctx, influxDB.bucket, influxDB.org, metrics...)
 }

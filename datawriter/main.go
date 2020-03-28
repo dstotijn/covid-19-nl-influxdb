@@ -30,7 +30,7 @@ func main() {
 
 		// Record metrics of daily case history in InfluxDB.
 		for date, caseReports := range casesHistory {
-			writeCount, err := writeMetrics(ctx, influxDB, date, caseReports)
+			writeCount, err := influxDB.writeMetrics(ctx, date, caseReports)
 			if err != nil {
 				log.Fatalf("[ERROR] Cannot write metrics to InfluxDB: %v", err)
 			}
